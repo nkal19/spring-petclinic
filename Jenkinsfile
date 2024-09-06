@@ -5,11 +5,12 @@ pipeline {
     stage('Maven Install') {
       agent {         
        docker {          
-         image 'jelastic:maven:3.9.5-openjdk-21'        
+        image 'maven:3.9.9-eclipse-temurin-21-alpine'        
      }       
   }       
   steps {
-       sh 'mvn --version clean install'
+       sh 'mvn --version'
+       sh 'mvn clean install'
        }
      }
    }
