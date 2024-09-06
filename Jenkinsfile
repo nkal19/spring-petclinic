@@ -5,12 +5,12 @@ pipeline {
      stage('Initialize'){
         agent {
                 docker {
-                    image 'jelastic/maven:3.9.5-openjdk-21'
+                    image 'jelastic:maven:3.9.5-openjdk-21'
                     reuseNode true
                 }
             }
             steps {
-                sh 'gradle --version'
+                sh 'mvn --version'
             }
       }
     stage('Maven Install') {
