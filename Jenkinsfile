@@ -2,10 +2,17 @@
 pipeline {
     agent none
    stages {     
-   stage('Initialize'){
-        def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+     stage('Initialize'){
+        agent {
+                docker {
+                    image 'jelastic/maven:3.9.5-openjdk-21'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'gradle --version'
+            }
+      }
     stage('Maven Install') {
       agent {         
        docker {          
