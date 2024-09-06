@@ -5,7 +5,7 @@ pipeline {
     stage('Maven Install') {
       agent {         
        docker {          
-         image 'jelastic\maven:3.9.5-openjdk-21'        
+         image 'jelastic:maven:3.9.5-openjdk-21'        
      }       
   }       
   steps {
